@@ -9,6 +9,8 @@ python csv_to_10Xdata.py matrix.csv
 ## Output
 
 (1) matrix.mtx - expression file with MatrixMarket File Format
+
 (2) genes.tsv
+
 (3) barcodes.tsv
 
