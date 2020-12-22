@@ -1,4 +1,4 @@
-import sys
+import sys, os
 
 ifile = open(sys.argv[1])
 line = ifile.readline()
