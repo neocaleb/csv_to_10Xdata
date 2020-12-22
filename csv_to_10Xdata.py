@@ -10,7 +10,7 @@ for i in range(len(gene_name)):
 ofile.close()
 
 ofile = open("matrix.mtx","w")
-ofile.write("%%MatrixMarket matrix coordinate integer general\n")
+ofile.write("%%MatrixMarket matrix coordinate integer general\n\n")
 barcodes=[];colNum=1;dataNum=0
 for line in ifile:
     temp=line.replace("\n","").split(",")
@@ -20,7 +20,7 @@ for line in ifile:
             ofile.write(str(i+1)+' '+str(colNum)+' '+temp[i+1]+'\n')
             dataNum=dataNum+1
     colNum=colNum+1
-ofile.seek(1)
+ofile.seek(2)
 ofile.write(str(len(gene_name))+" "+str(len(barcodes))+" "+str(dataNum)+'\n')
 ifile.close()
 
