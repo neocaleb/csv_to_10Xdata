@@ -9,8 +9,9 @@ for i in range(len(gene_name)):
     ofile.write(gene_name[i]+"\n")
 ofile.close()
 
-ofile = open("matrix.mtx","w")
-ofile.write("%%MatrixMarket matrix coordinate integer general\n\n")
+ofileHead = open("head.txt","w")
+ofile = open("matrix_temp.mtx","w")
+ofileHead.write("%%MatrixMarket matrix coordinate integer general\n")
 barcodes=[];colNum=1;dataNum=0
 for line in ifile:
     temp=line.replace("\n","").split(",")
@@ -20,9 +21,14 @@ for line in ifile:
             ofile.write(str(i+1)+' '+str(colNum)+' '+temp[i+1]+'\n')
             dataNum=dataNum+1
     colNum=colNum+1
-ofile.seek(2)
-ofile.write(str(len(gene_name))+" "+str(len(barcodes))+" "+str(dataNum)+'\n')
+ofile.close()
 ifile.close()
+
+ofileHead.write(str(len(gene_name))+" "+str(len(barcodes))+" "+str(dataNum)+"\n")
+ofileHead.close()
+
+os.system("cat head.txt matrix_temp.mtx > matrix.mtx")
+os.system("rm matrix_temp.mtx head.txt")
 
 ofile = open("barcodes.tsv","w")
 for i in range(len(barcodes)):
