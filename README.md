@@ -5,6 +5,7 @@ csv_to_10Xdata is a tool for transforming a gene expression matrix csv file into
 ## Usage
 
 python csv_to_10Xdata.py [expression_file]
+
 python csv_to_10Xdata_samplelimit.py [expression_file] [output_folder] [From i] [To j]
 
 ## Input
